@@ -25,7 +25,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(add(0, 22.1), 22.1)
 
     def test_sub(self):
-        """ @brief Method to test substraction (x - y)
+        """ @brief Method to test subtraction (x - y)
             @param self Self object
             @returns x - y
         """

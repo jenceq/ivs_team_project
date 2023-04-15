@@ -15,6 +15,7 @@ Supported functions:
     - exp(x, n)
     - fact(n)
     - sqrt(x, n)
+    - prime_check(num)
 """
 
 class math_lib:
@@ -112,3 +113,20 @@ class math_lib:
         if x < 0 and n % 2 == 0:
             raise ValueError("Math Error")
         return x ** (1/n)
+    
+    @staticmethod
+    def prime_check(num):
+        """
+        Determines whether a given integer is a prime number or not.
+
+        param num: The integer to check for primality.
+        return: 1 if the number is prime, 0 if it is not.
+        """
+        if num < 2:
+            return 0
+        
+        for i in range(2, int(num/2) + 1):
+            if num % i == 0:
+                return 0
+        
+        return 1

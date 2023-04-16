@@ -130,3 +130,7 @@ class math_lib:
                 return 0
         
         return 1
+
+    @staticmethod
+    def solve(string):
+        return eval(string)

@@ -185,7 +185,7 @@ class math_lib:
         for i in range(len(string)-1):
             if string[i] in "+-*/^√" and string[i+1] in "+*/^!":
                 raise ValueError("Syntax Error")
-            if string[i] == '!' and string[i+1] in "^√!":
+            if string[i] == '!' and string[i+1] in "√!":
                 raise ValueError("Syntax Error")
             
         #If there is an invalid character

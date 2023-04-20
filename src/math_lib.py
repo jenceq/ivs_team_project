@@ -130,6 +130,69 @@ class math_lib:
                 return 0
         
         return 1
+    
+    @staticmethod
+    def str_to_equation(string):
+        equation = []
+        token = ''
+
+        for char in string:
+            if char.isdigit() or char == '.':
+                token += char
+            else:
+                if token:
+                    equation.append(float(token) if '.' in token else int(token))
+                    token = ''
+                if char != ' ':
+                    equation.append(char)
+        if token:
+            equation.append(float(token) if '.' in token else int(token))
+
+        if equation[0] == '-':
+            equation[1] = math_lib.mul(-1, equation[1])
+            equation = equation[1:]
+
+        index_to_delete = []        
+        for i in range(1, len(equation)-1):
+            if equation[i] != '-':
+                continue
+            if type(equation[i]) == str and type(equation[i-1]) == str:
+                equation[i+1] = math_lib.mul(-1, equation[i+1])
+                index_to_delete.append(i)
+        num_of_deletions = 0
+        for index in index_to_delete:
+            index -= num_of_deletions
+            del equation[index]
+            num_of_deletions += 1
+        return equation
+
+    @staticmethod
+    def validate_equation(string):
+        string = string.replace(" ", "")
+        string = string.replace(",", ".")
+        string = string.replace("--", "+")
+        string = string.replace("+-", "-")
+
+        #If equation is empty
+        if not string: 
+            raise ValueError("Syntax Error")
+        
+        #If equation strats or ends with selected operands
+        if string[0] in "+*/^!" or string[-1] in "+-*/^√":
+            raise ValueError("Syntax Error")
+        
+        #If the selected operators are used twice (e.g. a*√b is possible)
+        for i in range(len(string)-1):
+            if string[i] in "+-*/^√!" and string[i+1] in "+*/^!":
+                raise ValueError("Syntax Error")
+        
+        #If there is an invalid character
+        allowed_chars = "+-*/^√!.0123456789"
+        for i in range(len(string)):
+            if string[i] not in allowed_chars:
+                raise ValueError("Invalid Character")
+        
+        return math_lib.str_to_equation(string)
 
     @staticmethod
     def solve(string):

@@ -101,5 +101,52 @@ class Tests(unittest.TestCase):
         self.assertRaises(ValueError, math_lib.fact, 1.125)
         self.assertRaises(ValueError, math_lib.fact, -2.54)
 
+    def test_prime_check(self):
+        """ @brief Method to test if a number is prime or not
+            @param self Self object
+            @returns 1 if the number is prime, 0 otherwise.
+        """
+        self.assertEqual(math_lib.prime_check(1), 0)
+        self.assertEqual(math_lib.prime_check(2), 1)
+        self.assertEqual(math_lib.prime_check(3), 1)
+        self.assertEqual(math_lib.prime_check(4), 0)
+        self.assertEqual(math_lib.prime_check(5), 1)
+        self.assertEqual(math_lib.prime_check(6), 0)
+        self.assertEqual(math_lib.prime_check(11), 1)
+        self.assertEqual(math_lib.prime_check(37), 1)
+        self.assertEqual(math_lib.prime_check(101), 1)
+        self.assertEqual(math_lib.prime_check(17), 1)
+        self.assertEqual(math_lib.prime_check(0), 0)
+
+    def test_validate_equation(self):
+        """ @brief Checks whether the string is valid or not and separates a string into operators and operands
+            @param self Self object
+            @returns If the string is valid, returns the string separated by separator ',' otherwise raises an error
+        """
+        self.assertEqual(math_lib.validate_equation("5+7*5-2*1/5^7*√5"), "5, '+', 7, '*', 5, '-', 2, '*', 1, '/', 5, '^', 7, '*', '√', 5")
+        self.assertEqual(math_lib.validate_equation("5!+7!*5!-2*1!/5!^7!√5"), "5, '!', '+', 7, '!', '*', 5, '!', '-', 2, '*', 1, '!', '/', 5, '!', '^', 7, '!', '*', '√', 5")
+        self.assertEqual(math_lib.validate_equation("2.1*5^2"), "2.1, '*', 5, '^', 2")
+        self.assertEqual(math_lib.validate_equation("-2.1456784848594191984894198494899797894894897498*0^1000"), "-2.1456784848594191984894198494899797894894897498, '*', 0, '^', 1000")
+        self.assertEqual(math_lib.validate_equation("--1+5,5+-7                        1"), "'+', 1, '+', 5.5, '-', 71")
+        self.assertRaises(ValueError, math_lib.validate_equation, "*.&%")
+        self.assertRaises(ValueError, math_lib.validate_equation, "5!+7!*5!-2!*1!/5!^7!+√5!+")
+        self.assertRaises(ValueError, math_lib.validate_equation, "-")
+        self.assertRaises(ValueError, math_lib.validate_equation, "+5-")
+        self.assertRaises(ValueError, math_lib.validate_equation, "^√5")
+        self.assertRaises(ValueError, math_lib.validate_equation, "1!*√5/")
+        self.assertRaises(ValueError, math_lib.validate_equation, "1-+5")
+
+    def test_solve(self):
+        """ @brief Solves the string equation
+            @param self Self object
+            @returns result of the evaluated string
+        """  
+        self.assertEqual(math_lib.solve("-2.1456784848594191984894198494899797894894897498, '*', 0, '^', 1000"), 0)
+        self.assertEqual(math_lib.solve("'+', 1, '+', 5.5, '-', 71"), -64.5)
+        self.assertEqual(math_lib.solve("2.1, '*', 5, '^', 2"), 52.5)
+        self.assertEqual(math_lib.solve("5, '!', '+', 7, '!', '*', 5, '!', '-', 2, '*', 1, '!', '/', 5, '!', '^', 7, '!', '*', '√', 5, '*', 0"), 0)
+        self.assertEqual(math_lib.solve("-1.1111444444444444444444444444444444444777777777777777777777777777779999999999999999995545, '*', 1, '^', 1"), -1.111144444444)
+        self.assertEqual(math_lib.solve("-2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, '^', 2, '^', 1"), 4)
+
 if __name__ == '__main__':
     unittest.main()

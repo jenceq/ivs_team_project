@@ -96,6 +96,8 @@ class math_lib:
         """
         if type(n) != int or n <= 0:
             raise ValueError("Math Error")
+        if x ** n > 2147483647:
+            raise ValueError("Max limit exceeded")
         return x ** n
     
     @staticmethod
@@ -156,6 +158,8 @@ class math_lib:
         for i in range(1, len(equation)-1):
             if equation[i] != '-':
                 continue
+            if equation[i-1] == '!':
+                continue
             if type(equation[i]) == str and type(equation[i-1]) == str:
                 equation[i+1] = math_lib.mul(-1, equation[i+1])
                 index_to_delete.append(i)
@@ -198,4 +202,70 @@ class math_lib:
 
     @staticmethod
     def solve(string):
-        return eval(string)
+        equation = math_lib.validate_equation(string)
+        
+        print(f"{string} - {equation}")
+
+        # while equation.index('!') != -1:
+        #     for i in range(0, len(equation)):
+        #         if equation[i] == '!':
+        #             equation[i-1] = math_lib.fact(equation[i-1])
+        
+        i = 0
+        while i < len(equation):
+            if equation[i] == '!':
+                equation[i-1] = math_lib.fact(equation[i-1])
+                del equation[i]
+            else:
+                i += 1
+
+        i = 0
+        while i < len(equation):
+            if equation[i] == '√':
+                equation[i+1] = math_lib.sqrt(equation[i+1], 2)
+                del equation[i]
+            else:
+                i += 1
+        
+        i = 0
+        while i < len(equation):
+            if equation[i] == '^':
+                equation[i] = math_lib.exp(equation[i-1], equation[i+1])
+                del equation[i-1]
+                del equation[i]
+            else:
+                i += 1
+                
+        i = 0
+        while i < len(equation):
+            if equation[i] == '*':
+                equation[i] = math_lib.mul(equation[i-1], equation[i+1])
+                del equation[i-1]
+                del equation[i]
+            elif equation[i] == '/':
+                equation[i] = math_lib.div(equation[i-1], equation[i+1])
+                del equation[i-1]
+                del equation[i]
+            else:
+                i += 1
+
+        i = 0
+        while i < len(equation):
+            if equation[i] == '+':
+                equation[i] = math_lib.add(equation[i-1], equation[i+1])
+                del equation[i-1]
+                del equation[i]
+            elif equation[i] == '-':
+                equation[i] = math_lib.sub(equation[i-1], equation[i+1])
+                del equation[i-1]
+                del equation[i]
+            else:
+                i += 1
+
+        return round(equation[0], 12)
+
+#print(math_lib.validate_equation("1+6!-3"))
+#print(eval("5!+7!*5!-2*1!/5!^7!*√5*0"))
+string = "-1--5,5+-7                        1"
+result = math_lib.solve(string)
+print(result)

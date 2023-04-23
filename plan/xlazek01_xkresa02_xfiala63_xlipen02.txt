@@ -1,0 +1,59 @@
+IVS - 2. Projekt
+Vývoj Kalkulačky
+
+Vedoucí týmu: 
+Patrik Lažek (xlazek01)
+
+Členové týmu: 
+Ondřej Kresa (xkresa02)
+Patrik Lažek (xlazek01)
+Jan Fiala (xfiala63)
+Jan Lipenský (xlipen02)
+
+
+-----------------------------------------Plán-projektu-----------------------------------------
+
+12.3 - Plánování plánu projektu, vytvoření GitHub repozitáře 
+16.3 - Testy
+19.3 - Makefile
+23.3 - Matematické funkce
+26.3 - Směrodatná odchylka
+28.3 - Průběžné testování
+31.3  - Předběžná dokumentace
+2.4 - GUI
+5.4 - Instalátor
+9.4 - Manuál a dokončení dokumentace
+13.4 - Testování
+16.4 - Mockup
+23.4 - Oprava chyb
+26.4 - Den odevzdání
+
+
+-----------------------------------------Rozdělení-práce---------------------------------------
+
+xlazek01 - Matematické funkce, plánování, směrodatná odchylka, mockup
+xkresa02 - Makefile, manuál
+xfiala63 - Dokumentace, testy
+xlipen02 - Instalátor, GUI, GIT
+
+
+-------------------------------------------Komunikace------------------------------------------
+
+Zvolené komunikační kanály:
+Discord - Pro konzultace a hovory
+Messenger - Pro okamžitou reakci
+
+
+-------------------------------------------Verzování-------------------------------------------
+
+Systém pro správu verzí - GitHub
+https://github.com/jenceq/ivs_team_project
+Oprávnění nastavena pro email: ivs.kontrola@gmail.com
+
+
+
+
+
+
+
+

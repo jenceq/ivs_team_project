@@ -73,7 +73,9 @@ Ostatní "neintuitivní" chyby programu jsou popsány níže.
 *********************************
 
 	1. Najděte adresář s aplikací "Kalcoolacka".
-	2. Smažte cílový adresář s aplikací.
+        2. Otevřete adresář.
+	3. Spusťte uninstall.bat
+        4. Dokončete odinstalaci.
 
 *********************************
 -------------Licence-------------

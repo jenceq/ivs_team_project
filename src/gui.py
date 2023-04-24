@@ -4,7 +4,8 @@
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtGui import QDesktopServices
+from PyQt5.QtCore import QUrl
 # Import knihovny math_lib
 from math_lib import math_lib
 m_lib=math_lib()
@@ -137,6 +138,7 @@ class Ui_Kalcoolacka(object):
 "border-color: rgb(124, 145, 170);")
         self.button9.setObjectName("button9")
         self.buttonGroup.addButton(self.button9)
+
         self.button0 = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.buttonPress("0"))
         self.button0.setGeometry(QtCore.QRect(100, 550, 101, 101))
         font = QtGui.QFont()
@@ -332,6 +334,8 @@ class Ui_Kalcoolacka(object):
         self.vysledek_bar.setInputMask("")
         self.vysledek_bar.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.vysledek_bar.setClearButtonEnabled(False)
+        regex = QtCore.QRegExp("[0-9+-/*,!^√\\s]*")
+        self.vysledek_bar.setValidator(QtGui.QRegExpValidator(regex))
         self.vysledek_bar.setObjectName("vysledek_bar")
         self.pocitani = QtWidgets.QLineEdit(self.centralwidget)
         self.pocitani.setGeometry(QtCore.QRect(10, 10, 491, 71))
@@ -346,7 +350,20 @@ class Ui_Kalcoolacka(object):
         self.pocitani.setInputMask("")
         self.pocitani.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing)
         self.pocitani.setClearButtonEnabled(False)
+        self.pocitani.setValidator(QtGui.QRegExpValidator(regex))
         self.pocitani.setObjectName("pocitani")
+        self.buttonHelp = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonHelp.clicked.connect(self.openHelp)
+        self.buttonHelp.setGeometry(QtCore.QRect(10, 10, 30, 30))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(17)
+        self.buttonHelp.setFont(font)
+        self.buttonHelp.setStyleSheet("background-color: rgb(91, 106, 125);\n"
+                                      "color: rgb(255, 255, 255);border-style: solid;\n"
+                                      "border-width: 1px;\n"
+                                      "border-color: rgb(124, 145, 170);")
+        self.buttonHelp.setObjectName("buttonHelp")
         Kalcoolacka.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(Kalcoolacka)
         self.statusbar.setObjectName("statusbar")
@@ -357,7 +374,8 @@ class Ui_Kalcoolacka(object):
 
     def retranslateUi(self, Kalcoolacka):
         _translate = QtCore.QCoreApplication.translate
-        Kalcoolacka.setWindowTitle(_translate("Kalcoolacka", "MainWindow"))
+        Kalcoolacka.setWindowTitle(_translate("Kalcoolacka", "Kalcoolacka"))
+        Kalcoolacka.setWindowIcon(QtGui.QIcon("D:/Documents/GitHub/ivs_team_project/src/images.png"))
         self.button1.setText(_translate("Kalcoolacka", "1"))
         self.button2.setText(_translate("Kalcoolacka", "2"))
         self.button3.setText(_translate("Kalcoolacka", "3"))
@@ -367,6 +385,7 @@ class Ui_Kalcoolacka(object):
         self.button7.setText(_translate("Kalcoolacka", "7"))
         self.button8.setText(_translate("Kalcoolacka", "8"))
         self.button9.setText(_translate("Kalcoolacka", "9"))
+        self.buttonHelp.setText(_translate("Kalcoolacka", "?"))
         self.button0.setText(_translate("Kalcoolacka", "0"))
         self.buttoncomma.setText(_translate("Kalcoolacka", ","))
         self.buttonEquals.setText(_translate("Kalcoolacka", "="))
@@ -389,7 +408,8 @@ class Ui_Kalcoolacka(object):
 
 
     def __init__(self):
-        self.vysledek_flag = 0;
+        self.vysledek_flag = 0
+
 
     """
     @brief Metody zajišťující funkčnost kalkulačky
@@ -421,7 +441,31 @@ class Ui_Kalcoolacka(object):
         if pressed == "=":
             vysledek = self.pocitani.text()
             vysledek = vysledek[:-1]
-            vysledek = m_lib.solve(vysledek)
+
+            try:
+                vysledek = m_lib.solve(vysledek)
+            except ZeroDivisionError:
+                self.pocitani.setText(self.pocitani.text()[:-1])
+                self.vysledek_bar.setText("You cant divide by zero.")
+                return
+            except ValueError as errorMes:
+                if str(errorMes) == "Math Error":
+                    self.pocitani.setText(self.pocitani.text()[:-1])
+                    self.vysledek_bar.setText("Math Error.")
+                    return
+                if str(errorMes) == "Syntax Error":
+                    self.pocitani.setText(self.pocitani.text()[:-1])
+                    self.vysledek_bar.setText("Syntax Error")
+                    return
+                if str(errorMes) == "Invalid Character":
+                    self.pocitani.setText(self.pocitani.text()[:-1])
+                    self.vysledek_bar.setText("Invalid Character")
+                    return
+                if str(errorMes) == "Max limit exceeded":
+                    self.pocitani.setText(self.pocitani.text()[:-1])
+                    self.vysledek_bar.setText("Max limit exceeded")
+                    return
+
             vysledek = str(vysledek)
             self.pocitani.setText(self.pocitani.text()[:-1])
             self.vysledek_bar.setText(vysledek)
@@ -446,8 +490,12 @@ class Ui_Kalcoolacka(object):
             else:
                 self.pocitani.setText("")
                 self.vysledek_bar.setText("Not a natural number.")
+        if self.pocitani.text() == "5318008":
+            self.vysledek_bar.setText("Haha. Nice.")
 
-    
+    def openHelp(self):
+        QDesktopServices.openUrl(QUrl("manual.txt"))
+
 
 if __name__ == "__main__":
     import sys

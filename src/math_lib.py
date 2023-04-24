@@ -94,7 +94,7 @@ class math_lib:
         return: The result of raising x to the power of n.
         raises ValueError: If n is not a positive integer.
         """
-        if type(n) != int or n <= 0:
+        if type(n) != int or n < 0:
             raise ValueError("Math Error")
         if x ** n > 2147483647:
             raise ValueError("Max limit exceeded")

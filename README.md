@@ -15,4 +15,4 @@ Nazev tymu
 Licence
 -------
 
-Tento program je poskytovan...
+Tento program je poskytován pod licencí GNU (General Public License).

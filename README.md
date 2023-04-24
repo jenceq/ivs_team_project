@@ -1,7 +1,7 @@
 Prostředí
 ---------
 
-Windows 10 64 bit
+Windows 10 - 64 bit
 
 Autoři
 ------

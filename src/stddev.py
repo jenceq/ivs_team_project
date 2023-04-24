@@ -1,9 +1,20 @@
-import sys
+#!/bin/python
+"""
+@package stddev.py
+@author: Patrik Lažek (xlazek01)
+@brief math library fucntions
+This is the library that reads the data from stdin and calculates the standard deviation to the console 
+"""
 
-total = 0
-#numbers = ['','1', '2', '', '', '', '3,6', '4', '-5', '6', '', '', '', '']
+import sys
+import random
+from math_lib import math_lib
+
 
 def file_input():
+    """ @brief Function imports data from stdin into list
+        @returns numbers - list
+    """
     first_line = sys.stdin.readline().strip()
 
     if ' ' in first_line or '\t' in first_line:
@@ -14,13 +25,15 @@ def file_input():
             number = line.strip()
             numbers.append(number)
 
-    print(numbers)
     return numbers
 
-numbers = file_input()
 
 def remove_white_chars(numbers):
-    index_to_delete = []        
+    """ 
+    @brief Function removes white chars from list
+    @param numbers - list
+    """
+    index_to_delete = []
     for i in range(0, len(numbers)):
         if numbers[i] == '':
             index_to_delete.append(i)
@@ -30,30 +43,53 @@ def remove_white_chars(numbers):
         del numbers[index]
         num_of_deletions += 1
 
-remove_white_chars(numbers)
-
-print(numbers)
 
 def format_floats(numbers):
+    """ 
+    @brief Function replaces ',' with '.' and converts value into float
+    @param numbers - list
+    """
     i = 0
     for number in numbers:
         if '.' in number:
             numbers[i] = float(number)
         elif ',' in number:
-            numbers[i] = numbers[i].replace(",",".")
+            numbers[i] = numbers[i].replace(",", ".")
             numbers[i] = float(numbers[i])
         else:
             numbers[i] = int(number)
         i += 1
 
-format_floats(numbers)   
+#1.470 seconds
+def standart_deviation(data):
+    """
+    @brief Function that evaluates standart deviation from dataset
+    @param data - list
+    @returns standart deviation
+    """
+    diff_squared = []
+    sum = 0
+    sum_of_diff = 0
+    n = len(data)
 
-for number in numbers:
-    print(type(number))
+    if n == 1:
+        raise ValueError("Not enough data.")
+
+    for number in data:
+        sum = math_lib.add(sum, number)
+
+    average = math_lib.div(sum, n)
+
+    for i in range(n):
+        diff_squared.append(math_lib.exp(math_lib.sub(data[i], average), 2))
+
+    for number in diff_squared:
+        sum_of_diff = math_lib.add(sum_of_diff, number)
+    
+    return math_lib.sqrt(math_lib.div(sum_of_diff, n-1), 2)
 
 
-# for number in numbers:
-#     if type(number) == int or type(number) == float:
-#         continue
-#     else:
-#         raise ValueError(f"err - {number}")
+data = file_input()
+remove_white_chars(data)
+format_floats(data)
+print(standart_deviation(data))

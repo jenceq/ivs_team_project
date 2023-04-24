@@ -215,8 +215,13 @@ class math_lib:
         i = 0
         while i < len(equation):
             if equation[i] == '√':
-                equation[i+1] = math_lib.sqrt(equation[i+1], 2)
-                del equation[i]
+                if type(equation[i-1]) == str:
+                    equation[i+1] = math_lib.sqrt(equation[i+1], 2)
+                    del equation[i]
+                else:
+                    equation[i+1] = math_lib.sqrt(equation[i+1], equation[i-1])
+                    del equation[i-1]
+                    del equation[i-1]
             else:
                 i += 1
         

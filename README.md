@@ -6,11 +6,11 @@ Windows 10 64 bit
 Autoři
 ------
 
-Nazev tymu
-- xlipen02 Jan Lipensky
+Název týmu
+- xlipen02 Jan Lipenský
 - xfiala63 Jan Fiala
-- xkresa02 Ondrej Kresa 
-- xlazek01 Patrik Lazek
+- xkresa02 Ondřej Kresa 
+- xlazek01 Patrik Lažek
 
 Licence
 -------

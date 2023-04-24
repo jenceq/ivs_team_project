@@ -77,7 +77,7 @@ class math_lib:
         return: The factorial of n.
         raises ValueError: If n is negative or not an integer.
         """
-        if type(n) != int or n < 0:
+        if type(n) != int or n < 0 or n > 170:
             raise ValueError("Math Error")
         if n == 0:
             return 1

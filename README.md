@@ -1,9 +1,9 @@
-Prostredi
+Prostředí
 ---------
 
-Windows 64bit
+Windows 10 64 bit
 
-Autori
+Autoři
 ------
 
 Nazev tymu

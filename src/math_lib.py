@@ -203,14 +203,7 @@ class math_lib:
     @staticmethod
     def solve(string):
         equation = math_lib.validate_equation(string)
-        
-        print(f"{string} - {equation}")
 
-        # while equation.index('!') != -1:
-        #     for i in range(0, len(equation)):
-        #         if equation[i] == '!':
-        #             equation[i-1] = math_lib.fact(equation[i-1])
-        
         i = 0
         while i < len(equation):
             if equation[i] == '!':
@@ -263,9 +256,3 @@ class math_lib:
                 i += 1
 
         return round(equation[0], 12)
-
-#print(math_lib.validate_equation("1+6!-3"))
-#print(eval("5!+7!*5!-2*1!/5!^7!*√5*0"))
-string = "-1--5,5+-7                        1"
-result = math_lib.solve(string)
-print(result)

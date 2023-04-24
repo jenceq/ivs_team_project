@@ -1,18 +1,18 @@
-Prostredi
+Prostředí
 ---------
 
-Windows 64bit
+Windows 10 64 bit
 
-Autori
+Autoři
 ------
 
-Nazev tymu
-- xlipen02 Jan Lipensky
+Název týmu
+- xlipen02 Jan Lipenský
 - xfiala63 Jan Fiala
-- xkresa02 Ondrej Kresa 
-- xlazek01 Patrik Lazek
+- xkresa02 Ondřej Kresa 
+- xlazek01 Patrik Lažek
 
 Licence
 -------
 
-Tento program je poskytovan...
+Tento program je poskytován pod licencí GNU (General Public License).

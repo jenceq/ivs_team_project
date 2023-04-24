@@ -1,0 +1,82 @@
+*********************************
+-------------Autoři--------------
+*********************************
+
+Jan Lipenský xlipen02
+Jan Fiala    xfiala63
+Ondřej Kresa xkresa02
+Patrik Lažek xlazek01 (vedoucí)
+
+*********************************
+--------------Úvod---------------
+*********************************
+
+Program "Kalcoolacka" vznikl jakožto 2. projekt v rámci předmětu IVS (Praktické aspekty vývoje software)
+na FIT VUT. Kalkulačka spadá pod licenci GNU (General Public License).
+Jedná se o primitivní kalkulačku schopnou základních matematických operací s uživatelským rozhraním.
+Podporována je pouze v prostředí operačního systému Windows 10 64 bit. Funkčnost v rámci
+jiných distribucí / operačních systémů není zaručena.
+
+Níže se lze dočíst více jak o ovládání programu, tak (od)instalaci.
+
+*********************************
+--------Ovládání programu--------
+*********************************
+
+Program funguje na bázi klasické kalkulačky.
+Uživatel zadá na vstup operace spolu s operandy, jenž chce vypočítat.
+Kalkulačka by na výstup měla 
+
+Kalcoolacka podporuje následující operace:
+
+- Sčítání	R
+- Odčítání	R	
+- Násobení	R
+- Dělení	R \ {0}
+- Mocnění	<0-N>
+- Odmocnění	(0-N)
+- Faktoriál	<0-170>
+- Detekci prvočísla
+
+--------------
+Chybové stavy:
+--------------
+Kalkulačka nepodporuje obvyklé stavy v matematice nepovolené.
+Ostatní "neintuitivní" chyby programu jsou popsány níže.
+
+      - Program příklady vyhodnocuje určitou posloupností operací, což může
+	v některých případech způsobovat problémy, popřípadě nepravdivé výsledky.
+	Tyto stavy jsou řešeny pomocí chybových hlášení. Příkladem budiž stav, ve kterém je
+	zadáno obrovské číslo, které se vyhodnotí programem jako "nekonečno". Přestože
+	Na konci výrazu bude dělení "nekonečnem", popřípadě násobení nulou, i přesto se výraz
+	nevyhodnotí a nastane chyba, neboť se pracuje s příliš velkými čísly. Z logického
+	hlediska takový příklad vyjde, v našem programu toto však ošetřeno není.
+	
+      - Při neplatném vstupu (neobsahujícím validní matematické operandy a operace) - "Syntax Error."
+      - Dělení nulou není podporováno - chybové hlášení "Zero div Error."
+      - Odmocnina z nuly je vyhodnocena chybovým hlášením "Zero div Error."
+      - Obrovská čísla jsou vyhodnocena chybovým hlášením "Math Error."
+      - Faktoriál > 170! Je vyhodnocen jako příliš velké číslo, nastává chybové hlášení "Math Error."
+      - Záporný exponent není podporován. (Dle specifikace zadání podporuje pouze přirozené exponenty.)
+      - Exponent větší než INT_MAX (2^31-1) je vyhodnocen chybovým hlášením "Max limit exceeded."
+
+*********************************
+------------Instalace------------
+*********************************
+
+	1. Spusťte setup.exe
+	2. Vyberte cílový adresář.
+	3. Klikněte na tlačítko "Install".
+
+*********************************
+-----------Odinstalace-----------
+*********************************
+
+	1. Najděte adresář s aplikací "Kalcoolacka".
+	2. Smažte cílový adresář s aplikací.
+
+*********************************
+-------------Licence-------------
+*********************************
+
+Program spadá pod licenci GNU (General Public License).

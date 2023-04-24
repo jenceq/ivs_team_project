@@ -77,7 +77,7 @@ class math_lib:
         return: The factorial of n.
         raises ValueError: If n is negative or not an integer.
         """
-        if type(n) != int or n < 0:
+        if type(n) != int or n < 0 or n > 170:
             raise ValueError("Math Error")
         if n == 0:
             return 1
@@ -94,7 +94,7 @@ class math_lib:
         return: The result of raising x to the power of n.
         raises ValueError: If n is not a positive integer.
         """
-        if type(n) != int or n <= 0:
+        if type(n) != int or n < 0:
             raise ValueError("Math Error")
         if x ** n > 2147483647:
             raise ValueError("Max limit exceeded")
@@ -203,14 +203,7 @@ class math_lib:
     @staticmethod
     def solve(string):
         equation = math_lib.validate_equation(string)
-        
-        print(f"{string} - {equation}")
 
-        # while equation.index('!') != -1:
-        #     for i in range(0, len(equation)):
-        #         if equation[i] == '!':
-        #             equation[i-1] = math_lib.fact(equation[i-1])
-        
         i = 0
         while i < len(equation):
             if equation[i] == '!':
@@ -263,9 +256,3 @@ class math_lib:
                 i += 1
 
         return round(equation[0], 12)
-
-#print(math_lib.validate_equation("1+6!-3"))
-#print(eval("5!+7!*5!-2*1!/5!^7!*√5*0"))
-string = "-1--5,5+-7                        1"
-result = math_lib.solve(string)
-print(result)

@@ -5,7 +5,7 @@ odevzdani = xlazek01
 dokumentace = ..\dokumentace.pdf
 doxygen = ..\doxygen
 manual = ..\manual.txt
-instalator_kalkulacky = ..\setupCalculator.exe
+instalator_kalkulacky = ..\setupKalcoolacka.exe
 instalator_profiling = ..\setupStddev.exe
 
 all: run

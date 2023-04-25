@@ -2,8 +2,11 @@
 calc = gui.py
 odchylka = stddev.py
 odevzdani = xlazek01
-dokumentace = dokumentace.pdf
-cesta_instalator_kalkulacky =
+dokumentace = ..\dokumentace.pdf
+doxygen = ..\doxygen
+manual = ..\manual.txt
+instalator_kalkulacky = ..\setupCalculator.exe
+instalator_profiling = ..\setupStddev.exe
 
 all: run
 
@@ -22,12 +25,14 @@ test:
 pack: 
 	mkdir ..\$(odevzdani)
 	mkdir ..\$(odevzdani)\doc
+	mkdir ..\$(odevzdani)\doc\doxygen
 	mkdir ..\$(odevzdani)\install
 	mkdir ..\$(odevzdani)\repo
 
-	xcopy ..\$(dokumentace) ..\$(odevzdani)\doc
+	xcopy $(doxygen) ..\$(odevzdani)\doc\doxygen
 
-	xcopy $(cesta_instalator_kalkulacky) ..\$(odevzdani)\install
+	xcopy $(instalator_kalkulacky) ..\$(odevzdani)\install
+	xcopy $(instalator_profiling) ..\$(odevzdani)\install
 
 	mkdir ..\$(odevzdani)\repo\plan
 	mkdir ..\$(odevzdani)\repo\profiling
@@ -39,4 +44,35 @@ pack:
 	xcopy ..\src ..\$(odevzdani)\repo\src
 
 help:
-	@echo napoveda
+	@echo **************
+	@echo ** Napoveda **
+	@echo **************
+	@echo Do kalkulacky lze cisla zadavat primo pomoci klavesnice nebo pomoci tlacitek na obrazovce.
+	@echo Pokud chcete vysledek smazat, musite hodnotu prvne nakliknout ve vystupnim okne nebo v zadavacim okne.
+	@echo Funkce tlacitek :
+	@echo ,
+	@echo 	desetinna carka
+	@echo C
+	@echo 	smaze obsah vystupniho a zadavaciho okna.
+	@echo DEL
+	@echo 	maze posledni zadane cislo.
+	@echo /
+	@echo 	vydeli prvni zadane cislo druhym zadanym cislem.
+	@echo x
+	@echo 	vynasobi dve zadana cisla
+	@echo -
+	@echo 	odecte od prvniho cisla druhe cislo
+	@echo +
+	@echo 	secte dve zadana cisla
+	@echo P
+	@echo 	overi zda je zadane cislo prvocislo
+	@echo ^
+	@echo 	umocni cislo x(1. cislo) na mocninu cisla n(2. cislo)
+	@echo !
+	@echo 	faktorial cisla
+	@echo odmocnina
+	@echo 	provede n-tou odmocninu(cislo pred odmocninou) z x(cislo za odmocninou)
+	@echo x na 2
+	@echo 	umocni cislo na druhou
+	@echo ?
+	@echo 	otevre napovedu

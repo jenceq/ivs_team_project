@@ -7,7 +7,6 @@ This is the library that reads the data from stdin and calculates the standard d
 """
 
 import sys
-import random
 from math_lib import math_lib
 
 
@@ -49,16 +48,14 @@ def format_floats(numbers):
     @brief Function replaces ',' with '.' and converts value into float
     @param numbers - list
     """
-    i = 0
-    for number in numbers:
+    for i, number in enumerate(numbers):
         if '.' in number:
             numbers[i] = float(number)
         elif ',' in number:
-            numbers[i] = numbers[i].replace(",", ".")
+            numbers[i] = number.replace(",", ".")
             numbers[i] = float(numbers[i])
         else:
             numbers[i] = int(number)
-        i += 1
 
 #1.470 seconds
 def standart_deviation(data):

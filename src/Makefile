@@ -37,11 +37,15 @@ pack:
 	mkdir ..\$(odevzdani)\repo\plan
 	mkdir ..\$(odevzdani)\repo\profiling
 	mkdir ..\$(odevzdani)\repo\src
+	mkdir ..\$(odevzdani)\repo\mockup
+	mkdir ..\$(odevzdani)\repo\.git
 
+	xcopy /h /E ..\.git ..\$(odevzdani)\repo\.git
 	xcopy ..\..\ivs_team_project ..\$(odevzdani)\repo
 	xcopy ..\plan ..\$(odevzdani)\repo\plan
 	xcopy ..\profiling ..\$(odevzdani)\repo\profiling
 	xcopy ..\src ..\$(odevzdani)\repo\src
+	xcopy ..\mockup ..\$(odevzdani)\repo\mockup
 
 help:
 	@echo **************

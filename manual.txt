@@ -1,0 +1,23 @@
+					**************
+					** Nápověda **
+					**************
+
+Do kalkulačky lze čísla zadávat přímo pomocí klávesnice nebo pomocí tlačítek na obrazovce.
+
+Pokud chcete výsledek smazat, musíte hodnotu prvně nakliknout ve výstupním okně
+nebo v zadávacím okně.
+
+Funkce tlačítek :
+	,   desetinná čárka
+	C   smaže obsah výstupního a zadávacího okna.
+	DEL maže poslední zadané číslo.
+	÷   vydělí první zadané číslo druhým zadaným číslem.
+	×   vynásobí dvě zadaná čísla
+	-   odečte od prvního čisla druhé číslo
+	+   sečte dvě zadaná čísla
+	P   ověří zda je zadané číslo prvočíslo
+	^   umocní číslo x(1. číslo) na mocninu čísla n(2. číslo)
+	!   faktoriál čísla
+	√   provede n-tou odmocninu(číslo před odmocninou) z x(číslo za odmocninou)
+	x²  umocní číslo na druhou
+	?   otevře nápovědu

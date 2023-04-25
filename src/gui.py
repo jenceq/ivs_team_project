@@ -8,6 +8,7 @@ from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtCore import QUrl
 # Import knihovny math_lib
 from math_lib import math_lib
+import os
 m_lib=math_lib()
 
 
@@ -494,8 +495,13 @@ class Ui_Kalcoolacka(object):
             self.vysledek_bar.setText("Haha. Nice.")
 
     def openHelp(self):
-        file_path = "../manual.txt"
-        QDesktopServices.openUrl(QUrl.fromLocalFile(file_path))
+
+        file_path_root= "../manual.txt"
+        file_path = "manual.txt"
+        if os.path.exists(file_path_root):
+            QDesktopServices.openUrl(QUrl.fromLocalFile(file_path_root))
+        elif os.path.exists(file_path):
+            QDesktopServices.openUrl(QUrl.fromLocalFile(file_path))
 
 
 if __name__ == "__main__":

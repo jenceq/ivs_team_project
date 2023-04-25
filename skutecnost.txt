@@ -1,1 +1,26 @@
-tento soubor bude obsahovat rozdil mezi planem projektu a skutecnosti
+-----------------------------------------Plán-projektu-----------------------------------------
+
+12.3 - Plánování plánu projektu, vytvoření GitHub repozitáře 
+16.3 - Testy
+19.3 - Makefile
+23.3 - Matematické funkce
+26.3 - Směrodatná odchylka
+28.3 - Průběžné testování
+31.3  - Předběžná dokumentace
+2.4 - GUI
+5.4 - Instalátor
+9.4 - Manuál a dokončení dokumentace
+13.4 - Testování
+16.4 - Mockup
+23.4 - Oprava chyb
+26.4 - Den odevzdání
+
+------------------------------------------Skutečnost-------------------------------------------
+
+- Nebyly jsme schopni dodržet zadané termíny.
+- Hlavní překážkou bylo nesprávné rozvržení a nedostatek času skrze ostatní projekty v rámci semestru.
+- Kdybychom s vývojem začli v půlce března, dokud jsme měli dostatek času, tyto problémy by pravděpodobně nenastaly.
+- Se znalostmi z přednášek jsme však po zkoušce 21.4.2023 začali vše dohánět a postupně kalkulačku dokončili v rámci možností.
+- Skrze známost mezi členy týmu jsme nebyli schopni na sebe navzájem zatlačit tak, aby došlo k dodržení termínů.
+- Po uvědomění si nedostatku času jsme svolali "emergency meeting" na discordu a programovali od rána do noci.
+- Celkově ale vývoj dopadl dobře. 

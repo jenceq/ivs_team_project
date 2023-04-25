@@ -494,7 +494,8 @@ class Ui_Kalcoolacka(object):
             self.vysledek_bar.setText("Haha. Nice.")
 
     def openHelp(self):
-        QDesktopServices.openUrl(QUrl("manual.txt"))
+        file_path = "../manual.txt"
+        QDesktopServices.openUrl(QUrl.fromLocalFile(file_path))
 
 
 if __name__ == "__main__":

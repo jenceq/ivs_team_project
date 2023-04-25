@@ -6,7 +6,7 @@ Windows 10 - 64 bit
 Autoři
 ------
 
-Název týmu
+CTRL + ALT + DEFEAT
 - xlipen02 Jan Lipenský
 - xfiala63 Jan Fiala
 - xkresa02 Ondřej Kresa 

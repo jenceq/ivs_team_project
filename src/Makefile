@@ -1,18 +1,17 @@
 #Sample Makefile
-calc =
-profile =
-odevzdani = odevzdani
+calc = gui.py
+odchylka = stddev.py
+odevzdani = xlazek01
 dokumentace = dokumentace.pdf
 cesta_instalator_kalkulacky =
-cesta_instalator_odchylky = 
 
 all: run
 
 run:
-	@./..\$(calc).exe
+	@python3.10 $(calc)
 
 profile:
-	@./..\$(profile).exe
+	@python3.10 $(odchylka) < ..\profiling\test_1000.txt
 
 clean: 
 	rd /S /Q __pycache__
@@ -29,7 +28,6 @@ pack:
 	xcopy ..\$(dokumentace) ..\$(odevzdani)\doc
 
 	xcopy $(cesta_instalator_kalkulacky) ..\$(odevzdani)\install
-	xcopy $(cesta_instalator_odchylky) ..\$(odevzdani)\install
 
 	mkdir ..\$(odevzdani)\repo\plan
 	mkdir ..\$(odevzdani)\repo\profiling
